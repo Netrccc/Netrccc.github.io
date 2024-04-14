@@ -1,0 +1,75 @@
+<?php
+session_start();
+
+if (!isset($_SESSION)) {
+    header("location: index");
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms confirmation</title>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./modal/style.css">
+    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
+</head>
+
+<body>
+    <?php
+    $amount = $_POST["amount"];
+    $link = $_POST["link"];
+    ?>
+    <section class="checkbox">
+        <div class="tile">
+            <input type="checkbox" name="accept" id="check1">
+            <label for="check1">
+                <span>
+                    <li>
+                        Read <a href="./disclaimer">Terms & Condition</a>
+                    </li>
+                </span>
+                <img src="./icon/terms.png" width="50px">
+                <h6>I Accept</h6>
+            </label>
+        </div>
+        <div class="tile">
+            <input type="checkbox" name="not-new-client" id="check2">
+            <label for="check2">
+                <img src="./icon/return.png" width="50px">
+                <h6>Already a client</h6>
+                <small style="text-align: center; font-size:10px; color:yellowgreen">
+                    please check this if you once purchased.
+                </small>
+            </label>
+        </div>
+        <div class="proceed">
+
+            <button id="proceed">
+                <a href="<?php echo $link; ?>">
+                    Proceed to payment of &nbsp; $<?php echo $amount; ?>
+                </a>
+            </button>
+
+        </div>
+        </div>
+    </section>
+
+
+    <script src="./function.js"></script>
+</body>
+<style>
+body {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+</style>
+
+</html>
